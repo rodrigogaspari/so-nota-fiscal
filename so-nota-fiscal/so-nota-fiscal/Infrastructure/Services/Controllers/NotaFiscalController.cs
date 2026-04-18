@@ -1,12 +1,10 @@
 using IdempotentAPI.Filters;
-using IdempotentAPI.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SoNotaFiscal.Application.Commands;
 using SoNotaFiscal.Application.Commands.Requests;
 using SoNotaFiscal.Application.Queries;
 using SoNotaFiscal.Application.Queries.Responses;
-using System;
 
 namespace SoNotaFiscal.Infrastructure.Services.Controllers
 {
@@ -37,6 +35,7 @@ namespace SoNotaFiscal.Infrastructure.Services.Controllers
         ///         
         ///</remarks>
         /// <param name="request">Corpo da requisição do recurso.</param>
+        /// <param name="idempotencyKey">Chave única para controle de Idempotência</param>
         /// <response code="200">Retorna sucesso na consulta</response>
         /// <response code="400">Se houver algum tipo de problema/validação na consulta</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -45,20 +44,20 @@ namespace SoNotaFiscal.Infrastructure.Services.Controllers
         [Idempotent(Enabled = false, ExpireHours = 24)]
         [HttpPost()]
         public async Task<ActionResult<ConsultaNotaFiscalResponse>> Post(
-            EmitirNotaFiscalRequest request, [FromHeader] string IdempotencyKey
+            EmitirNotaFiscalRequest request, [FromHeader] string idempotencyKey
             )
         {
-            var nota = await _mediator.Send<ConsultaNotaFiscalResponse>(new GetNotaFiscalByIdIdempotencyKeyQuery(IdempotencyKey));
+            var nota = await _mediator.Send<ConsultaNotaFiscalResponse>(new GetNotaFiscalByIdIdempotencyKeyQuery(idempotencyKey));
             if(nota != null)
                 return Ok(nota);
 
 
             //CQRS - Responsabilidade: COMMAND - GRAVAÇÃO DA NOTA FISCAL
-            await _mediator.Send(new CreateNotaFiscalCommand(request.Destinatario, request.Valor, IdempotencyKey));
+            await _mediator.Send(new CreateNotaFiscalCommand(request.Destinatario, request.Valor, idempotencyKey));
 
 
             //CQRS - Responsabilidade: QUERY - CONSULTA DOS DADOS DA NOTA FISCAL 
-            nota = await _mediator.Send<ConsultaNotaFiscalResponse>(new GetNotaFiscalByIdIdempotencyKeyQuery(IdempotencyKey));
+            nota = await _mediator.Send<ConsultaNotaFiscalResponse>(new GetNotaFiscalByIdIdempotencyKeyQuery(idempotencyKey));
 
             return Ok(nota);
         }

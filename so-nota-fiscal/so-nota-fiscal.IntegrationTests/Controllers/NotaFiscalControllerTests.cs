@@ -24,7 +24,7 @@ namespace SoNotaFiscal.IntegrationTests.Controllers
             var client = _factory.CreateClient();
             var guid = Guid.NewGuid().ToString();
             client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("IdempotencyKey", guid);
+            client.DefaultRequestHeaders.Add("idempotencyKey", guid);
 
             //Act
             var request = new EmitirNotaFiscalRequest()
@@ -46,7 +46,7 @@ namespace SoNotaFiscal.IntegrationTests.Controllers
             var client = _factory.CreateClient();
             var guid = Guid.NewGuid().ToString();
             client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("IdempotencyKey", guid);
+            client.DefaultRequestHeaders.Add("idempotencyKey", guid);
 
             // Act
             var request = new EmitirNotaFiscalRequest()
