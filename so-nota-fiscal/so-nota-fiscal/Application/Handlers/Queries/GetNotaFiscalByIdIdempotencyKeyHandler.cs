@@ -17,7 +17,7 @@ namespace SoNotaFiscal.Application.Handlers.Queries
 
         public async Task<ConsultaNotaFiscalResponse> Handle(GetNotaFiscalByIdIdempotencyKeyQuery query, CancellationToken cancellationToken)
         {
-            return _notaFiscalRepository.GetNotaFiscalByIdIdempotencyKey(query.IdIdempotencyKey);
+            return await _notaFiscalRepository.GetNotaFiscalByIdIdempotencyKey(query.IdIdempotencyKey);
         }
     }
 }

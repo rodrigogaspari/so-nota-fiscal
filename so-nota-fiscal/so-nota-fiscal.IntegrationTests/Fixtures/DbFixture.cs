@@ -15,7 +15,7 @@ namespace SoNotaFiscal.IntegrationTests.Fixtures
         public readonly string DatabaseName = $"SoNotaFiscalIntegrationTests-{Guid.NewGuid()}-database.sqlite";
         public DbFixture() 
         {
-            var config = new DatabaseConfig { Name = $"DataSource = {DatabaseName}", DatabaseName = DatabaseName };
+            var config = new DatabaseConfig { Name = $"DataSource = {this.DatabaseName}", DatabaseName = this.DatabaseName };
             databaseBootstrap = new DatabaseBootstrap(config);
             databaseBootstrap.Setup();
         }

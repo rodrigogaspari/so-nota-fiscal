@@ -7,6 +7,6 @@ namespace SoNotaFiscal.Application.Abstractions
     {
         void Save(INotaFiscalModel movimentoModel);
 
-        ConsultaNotaFiscalResponse GetNotaFiscalByIdIdempotencyKey(string idIdempotencyKey);
+        Task<ConsultaNotaFiscalResponse> GetNotaFiscalByIdIdempotencyKey(string idempotencyKey);
     }
 }

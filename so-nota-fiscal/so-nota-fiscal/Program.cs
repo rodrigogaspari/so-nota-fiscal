@@ -10,6 +10,7 @@ using SoNotaFiscal.Application.Validation;
 using SoNotaFiscal.Infrastructure.Database;
 using SoNotaFiscal.Infrastructure.Database.Repository;
 using SoNotaFiscal.Infrastructure.Sqlite;
+using StackExchange.Redis;
 
 public class Program
 {
@@ -45,6 +46,9 @@ public class Program
         builder.Services.AddIdempotentAPI();
         builder.Services.AddDistributedMemoryCache();
         builder.Services.AddIdempotentAPIUsingDistributedCache();
+
+        //Redir (running in Docker 127.0.0.1:6379)
+        builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost:6379"));
 
         // Customizations in Swagger (services)
         builder.Services.AddSwaggerSoNotaFiscalCustomizations();

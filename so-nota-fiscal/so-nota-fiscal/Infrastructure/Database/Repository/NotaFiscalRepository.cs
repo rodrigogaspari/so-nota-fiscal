@@ -2,16 +2,19 @@
 using SoNotaFiscal.Application.Abstractions;
 using SoNotaFiscal.Application.Abstractions.Model;
 using SoNotaFiscal.Application.Queries.Responses;
+using StackExchange.Redis;
 
 namespace SoNotaFiscal.Infrastructure.Database.Repository
 {
     public class NotaFiscalRepository : INotaFiscalRepository
     {
         private DbSession _session;
+        private readonly IDatabase _cache;
 
-        public NotaFiscalRepository(DbSession session)
+        public NotaFiscalRepository(DbSession session, IConnectionMultiplexer redis)
         {
             _session = session;
+            _cache = redis.GetDatabase(); 
         }
 
         private int ContaNota()
@@ -46,9 +49,19 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
         }
 
 
-        public ConsultaNotaFiscalResponse GetNotaFiscalByIdIdempotencyKey(string idempotencyKey)
+        public async Task<ConsultaNotaFiscalResponse> GetNotaFiscalByIdIdempotencyKey(string idempotencyKey)
         {
-            return _session.Connection.Query<ConsultaNotaFiscalResponse>(
+            string cacheKey = $"nota-fiscal:{idempotencyKey}";
+
+            // 1. Tenta recuperar do cache
+            var cached = await _cache.StringGetAsync(cacheKey);
+            if (cached.HasValue)
+            {
+                return System.Text.Json.JsonSerializer.Deserialize<ConsultaNotaFiscalResponse>(cached);
+            }
+
+            // 2. Se não estiver no cache, consulta no banco
+            var notafiscal = await _session.Connection.QueryFirstOrDefaultAsync<ConsultaNotaFiscalResponse>(
             @"SELECT 
               chave
              ,numero
@@ -59,7 +72,16 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
               FROM notafiscal
                 
               WHERE idempotencyKey = @idempotencyKey;",
-            new { idempotencyKey }).FirstOrDefault();
+            new { idempotencyKey });
+
+            // 3. Armazena no cache com TTL (ex.:  24 horas)
+            if (notafiscal != null)
+            {
+                var json = System.Text.Json.JsonSerializer.Serialize(notafiscal);
+                await _cache.StringSetAsync(cacheKey, json, TimeSpan.FromHours(24));
+            }
+
+            return notafiscal;
         }
     }
 
