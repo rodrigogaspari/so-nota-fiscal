@@ -1,6 +1,6 @@
-﻿namespace SoContaCorrente.Application.Abstractions
+﻿namespace SoNotaFiscal.Application.Abstractions
 {
-    public interface IContaCorrenteRepository
+    public interface INotaFisscalRepository
     {
         bool IsValidAccount(string? idContaCorrente);
 

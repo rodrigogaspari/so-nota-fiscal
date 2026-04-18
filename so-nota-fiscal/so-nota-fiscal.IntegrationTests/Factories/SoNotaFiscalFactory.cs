@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using SoContaCorrente.Infrastructure.Sqlite;
-using SoContaCorrente.IntegrationTests.Fixtures;
+using SoNotaFiscal.Infrastructure.Sqlite;
+using SoNotaFiscal.IntegrationTests.Fixtures;
 
-namespace SoContaCorrente.IntegrationTests.Factories
+namespace SoNotaFiscal.IntegrationTests.Factories
 {
     [Collection("Database")]
-    public class SoContaCorrenteFactory : WebApplicationFactory<Program>
+    public class SoNotaFiscalFactory : WebApplicationFactory<Program>
     {
         private readonly DbFixture _dbfixture;
 
-        public SoContaCorrenteFactory(DbFixture dbFixture)
+        public SoNotaFiscalFactory(DbFixture dbFixture)
         {
             _dbfixture = dbFixture;
         }

@@ -1,8 +1,8 @@
 ﻿using Dapper;
-using SoContaCorrente.Application.Abstractions;
-using SoContaCorrente.Application.Queries.Responses;
+using SoNotaFiscal.Application.Abstractions;
+using SoNotaFiscal.Application.Queries.Responses;
 
-namespace SoContaCorrente.Infrastructure.Database.Repository
+namespace SoNotaFiscal.Infrastructure.Database.Repository
 {
     public class SaldoRepository : ISaldoRepository
     {

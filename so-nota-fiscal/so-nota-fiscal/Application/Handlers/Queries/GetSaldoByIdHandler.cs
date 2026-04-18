@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using SoContaCorrente.Application.Abstractions;
-using SoContaCorrente.Application.Queries;
-using SoContaCorrente.Application.Queries.Responses;
+using SoNotaFiscal.Application.Abstractions;
+using SoNotaFiscal.Application.Queries;
+using SoNotaFiscal.Application.Queries.Responses;
 
-namespace SoContaCorrente.Application.Handlers.Queries
+namespace SoNotaFiscal.Application.Handlers.Queries
 {
     public class GetSaldoByIdHandler : IRequestHandler<GetSaldoByIdQuery, ConsultaSaldoResponse>
     {

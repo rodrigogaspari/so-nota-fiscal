@@ -1,8 +1,8 @@
 ﻿using Dapper;
-using SoContaCorrente.Application.Abstractions;
-using SoContaCorrente.Application.Abstractions.Model;
+using SoNotaFiscal.Application.Abstractions;
+using SoNotaFiscal.Application.Abstractions.Model;
 
-namespace SoContaCorrente.Infrastructure.Database.Repository
+namespace SoNotaFiscal.Infrastructure.Database.Repository
 {
     public class MovimentoRepository : IMovimentoRepository
     {

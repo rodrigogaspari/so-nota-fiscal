@@ -1,4 +1,4 @@
-﻿namespace SoContaCorrente.Application.Exceptions
+﻿namespace SoNotaFiscal.Application.Exceptions
 {
     public class AppException(IList<string> errors) : Exception(string.Join(", ", errors))
     {

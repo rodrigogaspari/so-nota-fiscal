@@ -1,6 +1,6 @@
-﻿using SoContaCorrente.Application.Queries.Responses;
+﻿using SoNotaFiscal.Application.Queries.Responses;
 
-namespace SoContaCorrente.Application.Abstractions
+namespace SoNotaFiscal.Application.Abstractions
 {
     public interface ISaldoRepository
     {

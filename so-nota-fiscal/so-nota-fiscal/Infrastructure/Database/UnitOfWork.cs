@@ -1,7 +1,7 @@
 ﻿using System.Data;
-using SoContaCorrente.Application.Abstractions;
+using SoNotaFiscal.Application.Abstractions;
 
-namespace SoContaCorrente.Infrastructure.Database
+namespace SoNotaFiscal.Infrastructure.Database
 {
     public sealed class UnitOfWork : IUnitOfWork
     {

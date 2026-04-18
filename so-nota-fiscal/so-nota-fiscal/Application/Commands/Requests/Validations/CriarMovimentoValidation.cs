@@ -1,16 +1,16 @@
 ﻿using FluentValidation;
-using SoContaCorrente.Application.Abstractions;
-using SoContaCorrente.Application.Commands;
+using SoNotaFiscal.Application.Abstractions;
+using SoNotaFiscal.Application.Commands;
 
-namespace SoContaCorrente.Application.Queries.Requests.Validations
+namespace SoNotaFiscal.Application.Queries.Requests.Validations
 {
     public class CriarMovimentoValidation : AbstractValidator<CreateMovimentoCommand>
     {
-        private readonly IContaCorrenteRepository _contaCorrenteRepository;
+        private readonly INotaFisscalRepository _notaFiscalRepository;
 
-        public CriarMovimentoValidation(IContaCorrenteRepository contaCorrenteRepository)
+        public CriarMovimentoValidation(INotaFisscalRepository contaCorrenteRepository)
         {
-            _contaCorrenteRepository = contaCorrenteRepository;
+            _notaFiscalRepository = contaCorrenteRepository;
 
             RuleFor(x => x.IdContaCorrente)
                 .NotEmpty()
@@ -36,12 +36,12 @@ namespace SoContaCorrente.Application.Queries.Requests.Validations
 
         private bool IsValidAccount(string? idContaCorrente)
         {
-            return _contaCorrenteRepository.IsValidAccount(idContaCorrente);
+            return _notaFiscalRepository.IsValidAccount(idContaCorrente);
         }
 
         private bool IsAcctiveAccount(string? idContaCorrente)
         {
-            return _contaCorrenteRepository.IsActiveAccount(idContaCorrente);
+            return _notaFiscalRepository.IsActiveAccount(idContaCorrente);
         }
     }
 }

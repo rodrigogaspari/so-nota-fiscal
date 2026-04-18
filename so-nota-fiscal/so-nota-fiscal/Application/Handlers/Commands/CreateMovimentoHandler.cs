@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using SoContaCorrente.Application.Abstractions;
-using SoContaCorrente.Application.Commands;
-using SoContaCorrente.Infrastructure.Database.Repository;
+using SoNotaFiscal.Application.Abstractions;
+using SoNotaFiscal.Application.Commands;
+using SoNotaFiscal.Infrastructure.Database.Repository;
 
-namespace SoContaCorrente.Application.Handlers.Commands
+namespace SoNotaFiscal.Application.Handlers.Commands
 {
     public class CreateMovimentoHandler : IRequestHandler<CreateMovimentoCommand>
     {

@@ -1,4 +1,4 @@
-﻿namespace SoContaCorrente.Application.Queries.Responses
+﻿namespace SoNotaFiscal.Application.Queries.Responses
 {
     public class ConsultaSaldoResponse
     {

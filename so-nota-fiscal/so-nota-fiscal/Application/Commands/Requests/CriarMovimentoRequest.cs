@@ -1,4 +1,4 @@
-﻿namespace SoContaCorrente.Application.Commands.Requests
+﻿namespace SoNotaFiscal.Application.Commands.Requests
 {
     [Serializable]
     public class CriarMovimentoRequest

@@ -3,13 +3,13 @@ using FluentValidation;
 using IdempotentAPI.Cache.DistributedCache.Extensions.DependencyInjection;
 using IdempotentAPI.Extensions.DependencyInjection;
 using MediatR;
-using SoContaCorrente.Application.Abstractions;
-using SoContaCorrente.Application.Middlewares;
-using SoContaCorrente.Application.SwaggerGen;
-using SoContaCorrente.Application.Validation;
-using SoContaCorrente.Infrastructure.Database;
-using SoContaCorrente.Infrastructure.Database.Repository;
-using SoContaCorrente.Infrastructure.Sqlite;
+using SoNotaFiscal.Application.Abstractions;
+using SoNotaFiscal.Application.Middlewares;
+using SoNotaFiscal.Application.SwaggerGen;
+using SoNotaFiscal.Application.Validation;
+using SoNotaFiscal.Infrastructure.Database;
+using SoNotaFiscal.Infrastructure.Database.Repository;
+using SoNotaFiscal.Infrastructure.Sqlite;
 
 public class Program
 {
@@ -39,7 +39,7 @@ public class Program
         // Repositories
         builder.Services.AddScoped<ISaldoRepository, SaldoRepository>();
         builder.Services.AddScoped<IMovimentoRepository, MovimentoRepository>();
-        builder.Services.AddScoped<IContaCorrenteRepository, ContaCorrenteRepository>();
+        builder.Services.AddScoped<INotaFisscalRepository, NotaFiscalRepository>();
 
         // Idempotency with IdempotentAPI, learn more about IdempotentAPI at
         // https://github.com/ikyriak/IdempotentAPI/blob/master/README.md 
@@ -48,13 +48,13 @@ public class Program
         builder.Services.AddIdempotentAPIUsingDistributedCache();
 
         // Customizations in Swagger (services)
-        builder.Services.AddSwaggerSoContaCorrenteCustomizations();
+        builder.Services.AddSwaggerSoNotaFiscalCustomizations();
 
         //Build App
         var app = builder.Build();
         
         // Customizations in Swagger (app)
-        app.AddSwaggerSoContaCorrenteCustomizations();
+        app.AddSwaggerSoNotaFiscalCustomizations();
 
         app.UseHttpsRedirection();
 

@@ -1,4 +1,4 @@
-﻿namespace SoContaCorrente.Infrastructure.Sqlite
+﻿namespace SoNotaFiscal.Infrastructure.Sqlite
 {
     public class DatabaseConfig
     {

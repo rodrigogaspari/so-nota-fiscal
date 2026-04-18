@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SoContaCorrente.Application.Commands
+namespace SoNotaFiscal.Application.Commands
 {
     public record CreateMovimentoCommand(string? IdContaCorrente, string? TipoMovimento, decimal? Valor) : IRequest;
 }

@@ -1,11 +1,11 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-namespace SoContaCorrente.Application.SwaggerGen
+namespace SoNotaFiscal.Application.SwaggerGen
 {
-    public static class SoContaCorrenteSwaggerGenExtensions
+    public static class SoNotaFiscalSwaggerGenExtensions
     {
-        public static IServiceCollection AddSwaggerSoContaCorrenteCustomizations(this IServiceCollection services)
+        public static IServiceCollection AddSwaggerSoNotaFiscalCustomizations(this IServiceCollection services)
         {
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
@@ -20,7 +20,7 @@ namespace SoContaCorrente.Application.SwaggerGen
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Smart Online - Conta Corrente Baking API",
+                    Title = "Smart Online - Nota Fiscal Emissor API",
                     Description = "Uma Web API ASP.NET Core para apresentação",
                 });
 
@@ -32,7 +32,7 @@ namespace SoContaCorrente.Application.SwaggerGen
             return services;
         }
 
-        public static WebApplication AddSwaggerSoContaCorrenteCustomizations(this WebApplication app) 
+        public static WebApplication AddSwaggerSoNotaFiscalCustomizations(this WebApplication app) 
         {
             if (app.Environment.IsDevelopment())
             {

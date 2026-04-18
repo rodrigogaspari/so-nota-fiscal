@@ -1,20 +1,20 @@
 using IdempotentAPI.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SoContaCorrente.Application.Commands;
-using SoContaCorrente.Application.Commands.Requests;
-using SoContaCorrente.Application.Queries;
-using SoContaCorrente.Application.Queries.Responses;
+using SoNotaFiscal.Application.Commands;
+using SoNotaFiscal.Application.Commands.Requests;
+using SoNotaFiscal.Application.Queries;
+using SoNotaFiscal.Application.Queries.Responses;
 
-namespace SoContaCorrente.Infrastructure.Services.Controllers
+namespace SoNotaFiscal.Infrastructure.Services.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class ContaCorrenteController : ControllerBase
+    public class NotaFiscalController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public ContaCorrenteController(IMediator mediator)
+        public NotaFiscalController(IMediator mediator)
         {
             _mediator = mediator;
         }

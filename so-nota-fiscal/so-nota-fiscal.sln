@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "so-nota-fiscal", "so-nota-fiscal\so-nota-fiscal.csproj", "{43375FE0-3CC7-B003-6E0A-27B06076E7F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "so-nota-fiscal.IntegrationTests", "so-nota-fiscal.IntegrationTests\so-nota-fiscal.IntegrationTests.csproj", "{77F9A200-0613-484D-9D6F-E256BDBCB492}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43375FE0-3CC7-B003-6E0A-27B06076E7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43375FE0-3CC7-B003-6E0A-27B06076E7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43375FE0-3CC7-B003-6E0A-27B06076E7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43375FE0-3CC7-B003-6E0A-27B06076E7F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77F9A200-0613-484D-9D6F-E256BDBCB492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F9A200-0613-484D-9D6F-E256BDBCB492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F9A200-0613-484D-9D6F-E256BDBCB492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F9A200-0613-484D-9D6F-E256BDBCB492}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

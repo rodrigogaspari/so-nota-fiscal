@@ -1,4 +1,4 @@
-﻿namespace SoContaCorrente.Application.Abstractions.Model
+﻿namespace SoNotaFiscal.Application.Abstractions.Model
 {
     public interface IMovimentoModel
     {

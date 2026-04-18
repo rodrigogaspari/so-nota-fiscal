@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using SoContaCorrente.Application.Queries.Responses;
+using SoNotaFiscal.Application.Queries.Responses;
 
-namespace SoContaCorrente.Application.Queries
+namespace SoNotaFiscal.Application.Queries
 {
     public record GetSaldoByIdQuery(string? IdContaCorrente) : IRequest<ConsultaSaldoResponse>;
 }

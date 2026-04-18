@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace SoContaCorrente.Application.SwaggerGen
+namespace SoNotaFiscal.Application.SwaggerGen
 {
     public class AddRequiredHeaderParameterIdempotencyKey : IOperationFilter
     {

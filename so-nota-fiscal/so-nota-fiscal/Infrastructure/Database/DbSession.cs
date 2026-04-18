@@ -1,10 +1,10 @@
 ﻿using Microsoft.Data.Sqlite;
-using SoContaCorrente.Infrastructure.Sqlite;
+using SoNotaFiscal.Infrastructure.Sqlite;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace SoContaCorrente.Infrastructure.Database
+namespace SoNotaFiscal.Infrastructure.Database
 {
     public sealed class DbSession : IDisposable
     {

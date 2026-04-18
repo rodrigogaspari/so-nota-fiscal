@@ -1,8 +1,8 @@
-using SoContaCorrente.Application.Exceptions;
+using SoNotaFiscal.Application.Exceptions;
 using System.Net;
 using System.Text.Json;
 
-namespace SoContaCorrente.Application.Middlewares;
+namespace SoNotaFiscal.Application.Middlewares;
 
 public class ErrorMiddleware(RequestDelegate next)
 {

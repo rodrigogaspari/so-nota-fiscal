@@ -1,4 +1,4 @@
-﻿using SoContaCorrente.Infrastructure.Sqlite;
+﻿using SoNotaFiscal.Infrastructure.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace SoContaCorrente.IntegrationTests.Fixtures
+namespace SoNotaFiscal.IntegrationTests.Fixtures
 {
     public class DbFixture : IDisposable
     {
         IDatabaseBootstrap databaseBootstrap;
         private bool disposedValue;
-        public readonly string DatabaseName = $"SoContaCorrenteIntegrationTests-{Guid.NewGuid()}-database.sqlite";
+        public readonly string DatabaseName = $"SoNotaFiscalIntegrationTests-{Guid.NewGuid()}-database.sqlite";
         public DbFixture() 
         {
             var config = new DatabaseConfig { Name = $"DataSource = {DatabaseName}", DatabaseName = DatabaseName };

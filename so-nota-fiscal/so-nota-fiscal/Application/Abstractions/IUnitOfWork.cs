@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SoContaCorrente.Application.Abstractions
+namespace SoNotaFiscal.Application.Abstractions
 {
     public interface IUnitOfWork : IDisposable
     {

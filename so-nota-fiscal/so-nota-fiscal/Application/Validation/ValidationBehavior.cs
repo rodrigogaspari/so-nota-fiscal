@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
-using SoContaCorrente.Application.Exceptions;
+using SoNotaFiscal.Application.Exceptions;
 
-namespace SoContaCorrente.Application.Validation
+namespace SoNotaFiscal.Application.Validation
 {
 
     public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IBaseRequest

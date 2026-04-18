@@ -1,13 +1,13 @@
 ﻿using Dapper;
-using SoContaCorrente.Application.Abstractions;
+using SoNotaFiscal.Application.Abstractions;
 
-namespace SoContaCorrente.Infrastructure.Database.Repository
+namespace SoNotaFiscal.Infrastructure.Database.Repository
 {
-    public class ContaCorrenteRepository : IContaCorrenteRepository
+    public class NotaFiscalRepository : INotaFisscalRepository
     {
         private DbSession _session;
 
-        public ContaCorrenteRepository(DbSession session)
+        public NotaFiscalRepository(DbSession session)
         {
             _session = session;
         }

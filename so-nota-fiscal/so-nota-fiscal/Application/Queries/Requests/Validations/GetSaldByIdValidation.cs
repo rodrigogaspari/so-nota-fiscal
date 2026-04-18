@@ -1,15 +1,15 @@
 ﻿using FluentValidation;
-using SoContaCorrente.Application.Abstractions;
+using SoNotaFiscal.Application.Abstractions;
 
-namespace SoContaCorrente.Application.Queries.Requests.Validations
+namespace SoNotaFiscal.Application.Queries.Requests.Validations
 {
     public class GetSaldByIdValidation : AbstractValidator<GetSaldoByIdQuery>
     {
-        private readonly IContaCorrenteRepository _contaCorrenteRepository; 
+        private readonly INotaFisscalRepository _notaFiscalRepository; 
 
-        public GetSaldByIdValidation(IContaCorrenteRepository contaCorrenteRepository )
+        public GetSaldByIdValidation(INotaFisscalRepository contaCorrenteRepository )
         {
-            _contaCorrenteRepository = contaCorrenteRepository;
+            _notaFiscalRepository = contaCorrenteRepository;
 
             RuleFor(x => x.IdContaCorrente)
                 .NotEmpty()
@@ -23,12 +23,12 @@ namespace SoContaCorrente.Application.Queries.Requests.Validations
 
         private bool IsValidAccount(string? idContaCorrente)
         {
-            return _contaCorrenteRepository.IsValidAccount(idContaCorrente);
+            return _notaFiscalRepository.IsValidAccount(idContaCorrente);
         }
 
         private bool IsAcctiveAccount(string? idContaCorrente)
         {
-            return _contaCorrenteRepository.IsActiveAccount(idContaCorrente);
+            return _notaFiscalRepository.IsActiveAccount(idContaCorrente);
         }
     }
 }

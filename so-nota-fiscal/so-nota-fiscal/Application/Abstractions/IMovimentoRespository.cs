@@ -1,6 +1,6 @@
-﻿using SoContaCorrente.Application.Abstractions.Model;
+﻿using SoNotaFiscal.Application.Abstractions.Model;
 
-namespace SoContaCorrente.Application.Abstractions
+namespace SoNotaFiscal.Application.Abstractions
 {
     public interface IMovimentoRepository
     {

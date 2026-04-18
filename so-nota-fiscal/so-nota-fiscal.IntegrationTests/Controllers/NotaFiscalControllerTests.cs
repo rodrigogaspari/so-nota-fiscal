@@ -1,18 +1,18 @@
 ﻿using FluentAssertions;
-using SoContaCorrente.Application.Commands.Requests;
-using SoContaCorrente.Application.Queries.Responses;
-using SoContaCorrente.IntegrationTests.Factories;
+using SoNotaFiscal.Application.Commands.Requests;
+using SoNotaFiscal.Application.Queries.Responses;
+using SoNotaFiscal.IntegrationTests.Factories;
 using System.Net;
 using System.Net.Http.Json;
 
-namespace SoContaCorrente.IntegrationTests.Controllers
+namespace SoNotaFiscal.IntegrationTests.Controllers
 {
     [Collection("Database")]
-    public class ContaCorrenteControllerTests : IClassFixture<SoContaCorrenteFactory>
+    public class NotaFiscalControllerTests : IClassFixture<SoNotaFiscalFactory>
     {
-        private readonly SoContaCorrenteFactory _factory;
+        private readonly SoNotaFiscalFactory _factory;
 
-        public ContaCorrenteControllerTests(SoContaCorrenteFactory factory)
+        public NotaFiscalControllerTests(SoNotaFiscalFactory factory)
         {
             _factory = factory;
         }

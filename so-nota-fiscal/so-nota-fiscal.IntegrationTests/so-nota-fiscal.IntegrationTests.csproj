@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\so-conta-corrente\so-conta-corrente.csproj" />
+    <ProjectReference Include="..\so-nota-fiscal\so-nota-fiscal.csproj" />
   </ItemGroup>
 
   <ItemGroup>
