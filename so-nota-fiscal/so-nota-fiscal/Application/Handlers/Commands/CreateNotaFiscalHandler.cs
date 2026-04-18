@@ -5,28 +5,27 @@ using SoNotaFiscal.Infrastructure.Database.Repository;
 
 namespace SoNotaFiscal.Application.Handlers.Commands
 {
-    public class CreateMovimentoHandler : IRequestHandler<CreateMovimentoCommand>
+    public class CreateNotaFiscalHandler : IRequestHandler<CreateNotaFiscalCommand>
     {
 
-        private readonly IMovimentoRepository _movimentoRepository;
+        private readonly INotaFiscalRepository _movimentoRepository;
 
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateMovimentoHandler(IMovimentoRepository movimentoRepository, IUnitOfWork unitOfWork)
+        public CreateNotaFiscalHandler(INotaFiscalRepository movimentoRepository, IUnitOfWork unitOfWork)
         {
             _movimentoRepository = movimentoRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(CreateMovimentoCommand command, CancellationToken cancellationToken)
+        public async Task Handle(CreateNotaFiscalCommand command, CancellationToken cancellationToken)
         {
             _unitOfWork.BeginTransaction();
 
             _movimentoRepository.Save(
-                new MovimentoModel()
+                new NotaFiscalModel()
                 {
-                    IdContaCorrente = command.IdContaCorrente,
-                    TipoMovimento = command.TipoMovimento,
+                    Destinatario = command.Destinatario,
                     Valor = command.Valor.GetValueOrDefault()
                 });
 

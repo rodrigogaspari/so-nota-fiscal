@@ -1,9 +1,10 @@
 ﻿using SoNotaFiscal.Application.Abstractions.Model;
+using System.Xml.Linq;
 
 namespace SoNotaFiscal.Application.Abstractions
 {
-    public interface IMovimentoRepository
+    public interface INotaFiscalRepository
     {
-        public void Save(IMovimentoModel movimentoModel);
+        void Save(INotaFiscalModel movimentoModel);
     }
 }

@@ -58,6 +58,7 @@
   <ItemGroup>
     <Folder Include="Application\Commands\Behaviors\" />
     <Folder Include="Application\Commands\Responses\" />
+    <Folder Include="Application\Queries\Requests\Validations\" />
     <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\Enumerators\" />
     <Folder Include="Domain\Language\" />

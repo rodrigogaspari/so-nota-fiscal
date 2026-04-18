@@ -22,7 +22,7 @@ public class Program
 
         // Sqlite, learn more about Sqlite at:
         // https://www.sqlite.org
-        builder.Services.AddSingleton(new DatabaseConfig { Name = builder.Configuration.GetValue("DatabaseName", "Data Source=database.sqlite")});
+        builder.Services.AddSingleton(new DatabaseConfig { Name = builder.Configuration.GetValue("DatabaseName", "Data Source=so-nota-fiscal.sqlite") });
         builder.Services.AddSingleton<IDatabaseBootstrap, DatabaseBootstrap>();
 
         // MediatR
@@ -38,8 +38,7 @@ public class Program
 
         // Repositories
         builder.Services.AddScoped<ISaldoRepository, SaldoRepository>();
-        builder.Services.AddScoped<IMovimentoRepository, MovimentoRepository>();
-        builder.Services.AddScoped<INotaFisscalRepository, NotaFiscalRepository>();
+        builder.Services.AddScoped<INotaFiscalRepository, NotaFiscalRepository>();
 
         // Idempotency with IdempotentAPI, learn more about IdempotentAPI at
         // https://github.com/ikyriak/IdempotentAPI/blob/master/README.md 
