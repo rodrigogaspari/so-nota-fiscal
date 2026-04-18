@@ -2,7 +2,7 @@
 using SoNotaFiscal.Application.Abstractions;
 using SoNotaFiscal.Application.Commands;
 
-namespace SoNotaFiscal.Application.Queries.Requests.Validations
+namespace SoNotaFiscal.Application.Commands.Requests.Validations
 {
     public class EmitirNotaFiscalValidation : AbstractValidator<CreateNotaFiscalCommand>
     {

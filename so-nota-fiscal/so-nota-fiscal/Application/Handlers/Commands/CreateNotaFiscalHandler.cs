@@ -26,7 +26,8 @@ namespace SoNotaFiscal.Application.Handlers.Commands
                 new NotaFiscalModel()
                 {
                     Destinatario = command.Destinatario,
-                    Valor = command.Valor.GetValueOrDefault()
+                    Valor = command.Valor.GetValueOrDefault(), 
+                    IdempotencyKey = command.IdempotencyKey,
                 });
 
             _unitOfWork.Commit();

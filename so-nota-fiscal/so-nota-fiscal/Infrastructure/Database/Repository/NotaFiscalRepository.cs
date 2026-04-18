@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SoNotaFiscal.Application.Abstractions;
 using SoNotaFiscal.Application.Abstractions.Model;
+using SoNotaFiscal.Application.Queries.Responses;
 
 namespace SoNotaFiscal.Infrastructure.Database.Repository
 {
@@ -37,13 +38,29 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
 
             await _session.Connection.ExecuteAsync(
                 @"INSERT INTO notafiscal 
-                (chave, numero, destinatario, valor)
+                (chave, numero, destinatario, valor, idempotencyKey)
                 
                 VALUES 
-                (@Chave, @Numero, @Destinatario, @Valor);"
+                (@Chave, @Numero, @Destinatario, @Valor, @IdempotencyKey);"
                 , notafiscalModel);
         }
-               
+
+
+        public ConsultaNotaFiscalResponse GetNotaFiscalByIdIdempotencyKey(string idempotencyKey)
+        {
+            return _session.Connection.Query<ConsultaNotaFiscalResponse>(
+            @"SELECT 
+              chave
+             ,numero
+             ,destinatario
+             ,valor
+             ,idempotencyKey                
+                   
+              FROM notafiscal
+                
+              WHERE idempotencyKey = @idempotencyKey;",
+            new { idempotencyKey }).FirstOrDefault();
+        }
     }
 
     public class NotaFiscalModel : INotaFiscalModel
@@ -55,5 +72,7 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
         public string Destinatario { get; set; }
 
         public decimal Valor { get; set; }
+
+        public string IdempotencyKey { get; set; }
     }
 }

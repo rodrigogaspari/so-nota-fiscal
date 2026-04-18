@@ -13,9 +13,9 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
             _session = session;
         }
 
-        public Task<ConsultaSaldoResponse> GetSaldo(string idContaCorrente)
+        public Task<ConsultaNotaFiscalResponse> GetSaldo(string idContaCorrente)
         {
-            return Task.FromResult(_session.Connection.Query<ConsultaSaldoResponse>(
+            return Task.FromResult(_session.Connection.Query<ConsultaNotaFiscalResponse>(
                     @"
                     SELECT 
                      r.Numero
@@ -37,7 +37,7 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
                     
                         WHERE 
                         m.idcontacorrente=@idContaCorrente
-                    )as r", new { idContaCorrente }, _session.Transaction).FirstOrDefault() ?? new ConsultaSaldoResponse());
+                    )as r", new { idContaCorrente }, _session.Transaction).FirstOrDefault() ?? new ConsultaNotaFiscalResponse());
         }
     }
 }

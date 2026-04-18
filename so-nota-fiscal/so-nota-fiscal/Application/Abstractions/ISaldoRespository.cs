@@ -4,6 +4,6 @@ namespace SoNotaFiscal.Application.Abstractions
 {
     public interface ISaldoRepository
     {
-        Task<ConsultaSaldoResponse> GetSaldo(string idContaCorrente);
+        Task<ConsultaNotaFiscalResponse> GetSaldo(string idContaCorrente);
     }
 }

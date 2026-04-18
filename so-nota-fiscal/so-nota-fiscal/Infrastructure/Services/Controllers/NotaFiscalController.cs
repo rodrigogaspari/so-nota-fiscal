@@ -1,8 +1,12 @@
 using IdempotentAPI.Filters;
+using IdempotentAPI.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SoNotaFiscal.Application.Commands;
 using SoNotaFiscal.Application.Commands.Requests;
+using SoNotaFiscal.Application.Queries;
+using SoNotaFiscal.Application.Queries.Responses;
+using System;
 
 namespace SoNotaFiscal.Infrastructure.Services.Controllers
 {
@@ -38,15 +42,25 @@ namespace SoNotaFiscal.Infrastructure.Services.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Route("nota")]
-        [Idempotent(Enabled = true, ExpireHours = 24)]
+        [Idempotent(Enabled = false, ExpireHours = 24)]
         [HttpPost()]
-        public async Task<ActionResult> Post(
-            EmitirNotaFiscalRequest request
+        public async Task<ActionResult<ConsultaNotaFiscalResponse>> Post(
+            EmitirNotaFiscalRequest request, [FromHeader] string IdempotencyKey
             )
         {
-            await _mediator.Send(new CreateNotaFiscalCommand(request.Destinatario, request.Valor));
+            var nota = await _mediator.Send<ConsultaNotaFiscalResponse>(new GetNotaFiscalByIdIdempotencyKeyQuery(IdempotencyKey));
+            if(nota != null)
+                return Ok(nota);
 
-            return Ok();
+
+            //CQRS - Responsabilidade: COMMAND - GRAVAÇÃO DA NOTA FISCAL
+            await _mediator.Send(new CreateNotaFiscalCommand(request.Destinatario, request.Valor, IdempotencyKey));
+
+
+            //CQRS - Responsabilidade: QUERY - CONSULTA DOS DADOS DA NOTA FISCAL 
+            nota = await _mediator.Send<ConsultaNotaFiscalResponse>(new GetNotaFiscalByIdIdempotencyKeyQuery(IdempotencyKey));
+
+            return Ok(nota);
         }
     }
 }

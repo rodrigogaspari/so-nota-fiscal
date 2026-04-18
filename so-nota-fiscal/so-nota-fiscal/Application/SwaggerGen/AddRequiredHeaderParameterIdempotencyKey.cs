@@ -14,13 +14,21 @@ namespace SoNotaFiscal.Application.SwaggerGen
                 if (operation.Parameters == null)
                     operation.Parameters = new List<OpenApiParameter>();
 
-                operation.Parameters.Add(new OpenApiParameter()
+                var parameterIdempotency =  operation.Parameters.Where(x => x.Name.Equals("IdempotencyKey")).FirstOrDefault();
+                if (parameterIdempotency == null)
                 {
-                    Name = "IdempotencyKey",
-                    In = ParameterLocation.Header,
-                    Schema = new OpenApiSchema() { Type = "String" },
-                    Example = new OpenApiString(Guid.NewGuid().ToString())
-                });
+                    operation.Parameters.Add(new OpenApiParameter()
+                    {
+                        Name = "IdempotencyKey",
+                        In = ParameterLocation.Header,
+                        Schema = new OpenApiSchema() { Type = "String" },
+                        Example = new OpenApiString(Guid.NewGuid().ToString())
+                    });
+                }
+                else
+                {
+                    parameterIdempotency.Example = new OpenApiString(Guid.NewGuid().ToString());
+                }
             }
         }
     }

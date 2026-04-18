@@ -2,5 +2,5 @@
 
 namespace SoNotaFiscal.Application.Commands
 {
-    public record CreateNotaFiscalCommand(string? Destinatario, decimal? Valor) : IRequest;
+    public record CreateNotaFiscalCommand(string? Destinatario, decimal? Valor, string IdempotencyKey) : IRequest;
 }
