@@ -10,8 +10,8 @@ using System;
 
 namespace SoNotaFiscal.Infrastructure.Services.Controllers
 {
-    [ApiController]
-    [Route("api/v1/[controller]")]
+    [ApiController()]
+    [Route("api/v1/notafiscal")]
     public class NotaFiscalController : ControllerBase
     {
         private readonly IMediator _mediator;
