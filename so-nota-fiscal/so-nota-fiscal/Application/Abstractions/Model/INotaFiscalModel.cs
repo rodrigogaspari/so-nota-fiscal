@@ -6,7 +6,7 @@
 
         public string Numero { get; set; }
 
-        public string Destinatario { get; set; }
+        public string Cliente { get; set; }
 
         public decimal Valor { get; set; }
     }

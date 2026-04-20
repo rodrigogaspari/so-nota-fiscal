@@ -25,7 +25,7 @@ namespace SoNotaFiscal.Application.Handlers.Commands
             _movimentoRepository.Save(
                 new NotaFiscalModel()
                 {
-                    Destinatario = command.Destinatario,
+                    Cliente = command.Cliente,
                     Valor = command.Valor.GetValueOrDefault(), 
                     IdempotencyKey = command.IdempotencyKey,
                 });

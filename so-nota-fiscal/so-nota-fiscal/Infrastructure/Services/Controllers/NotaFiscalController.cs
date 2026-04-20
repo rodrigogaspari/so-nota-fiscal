@@ -53,7 +53,7 @@ namespace SoNotaFiscal.Infrastructure.Services.Controllers
 
 
             //CQRS - Responsabilidade: COMMAND - GRAVAÇÃO DA NOTA FISCAL
-            await _mediator.Send(new CreateNotaFiscalCommand(request.Destinatario, request.Valor, idempotencyKey));
+            await _mediator.Send(new CreateNotaFiscalCommand(request.Cliente, request.Valor, idempotencyKey));
 
 
             //CQRS - Responsabilidade: QUERY - CONSULTA DOS DADOS DA NOTA FISCAL 

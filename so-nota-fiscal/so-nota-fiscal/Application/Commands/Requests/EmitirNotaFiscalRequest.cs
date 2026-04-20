@@ -7,7 +7,7 @@
         /// Destinatário da NF-e
         /// </summary>
         /// <example>José da Silva</example>
-        public string? Destinatario { get; set; }
+        public string? Cliente { get; set; }
 
         /// <summary>
         /// Valor em R$ da NF-e.

@@ -2,12 +2,14 @@
 {
     public class ConsultaNotaFiscalResponse
     {
-        public int Numero { get; set; }
+        public string? IdentificacaoCliente { get; set; }
 
-        public string Chave { get; set; }
+        public string? Cliente { get; set; }
 
-        public string Destinatario { get; set; }
+        public string? Numero { get; set; }
 
-        public decimal Valor { get; set; }
+        public decimal? Valor { get; set; }
+
+        public string? Chave { get; set; }
     }
 }

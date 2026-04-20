@@ -29,11 +29,11 @@ namespace SoNotaFiscal.IntegrationTests.Controllers
             //Act
             var request = new EmitirNotaFiscalRequest()
             {
-                Destinatario = "Carlos",
+                Cliente = "Carlos",
                 Valor = 50
             };
             var response = await client.PostAsJsonAsync($"api/v1/notafiscal/nota", request);
-
+                
             //Assert
             Assert.NotNull(response);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -51,7 +51,7 @@ namespace SoNotaFiscal.IntegrationTests.Controllers
             // Act
             var request = new EmitirNotaFiscalRequest()
             {
-                Destinatario = "Carlos",
+                Cliente = "Carlos",
                 Valor = 0
             };
 

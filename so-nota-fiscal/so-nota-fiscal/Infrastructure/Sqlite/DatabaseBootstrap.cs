@@ -24,7 +24,7 @@ namespace SoNotaFiscal.Infrastructure.Sqlite
             connection.Execute("CREATE TABLE notafiscal ( " +
                                "chave TEXT(44) PRIMARY KEY," +
                                "numero INTEGER(10) NOT NULL UNIQUE," +
-                               "destinatario TEXT(100) NOT NULL," +
+                               "cliente TEXT(100) NOT NULL," +
                                "valor REAL NOT NULL, " +
                                "idempotencyKey TEXT(100)" +
                                ");");

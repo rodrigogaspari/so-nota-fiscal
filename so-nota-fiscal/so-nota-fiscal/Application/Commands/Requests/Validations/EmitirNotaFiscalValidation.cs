@@ -18,10 +18,10 @@ namespace SoNotaFiscal.Application.Commands.Requests.Validations
                 .GreaterThan(0)
                 .WithMessage("Valor invalido para esta operacao.");
 
-            RuleFor(x => x.Destinatario)
+            RuleFor(x => x.Cliente)
                 .NotNull()
                 .NotEmpty()
-                .WithMessage("Destinatario invalido para esta operacao.");
+                .WithMessage("Cliente invalido para esta operacao.");
         }
     }
 }

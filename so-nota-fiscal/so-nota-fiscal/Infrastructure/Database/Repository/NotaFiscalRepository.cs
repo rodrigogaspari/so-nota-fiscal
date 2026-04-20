@@ -41,10 +41,10 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
 
             await _session.Connection.ExecuteAsync(
                 @"INSERT INTO notafiscal 
-                (chave, numero, destinatario, valor, idempotencyKey)
+                (chave, numero, cliente, valor, idempotencyKey)
                 
                 VALUES 
-                (@Chave, @Numero, @Destinatario, @Valor, @IdempotencyKey);"
+                (@Chave, @Numero, @Cliente, @Valor, @IdempotencyKey);"
                 , notafiscalModel);
         }
 
@@ -65,7 +65,7 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
             @"SELECT 
               chave
              ,numero
-             ,destinatario
+             ,cliente
              ,valor
              ,idempotencyKey                
                    
@@ -91,7 +91,7 @@ namespace SoNotaFiscal.Infrastructure.Database.Repository
 
         public string Numero { get; set; }
 
-        public string Destinatario { get; set; }
+        public string Cliente { get; set; }
 
         public decimal Valor { get; set; }
 
